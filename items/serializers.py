@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import Item, Category, Cart
+from .models import Item, Category, Cart, Category
 
 
 class ItemSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Item
-        fields = ['pk', 'name', 'price', 'description', 'chars', 'new_price', 'category']
+        fields = ['pk', 'name', 'price', 'description', 'chars', 'new_price', 'category', 'image']
 
 
 class CuttedItemSerializer(serializers.HyperlinkedModelSerializer):
@@ -27,3 +27,9 @@ class CartSerializer(serializers.Serializer):
         instance.goods_quantity = validated_data.get('goods_quantity', instance.code)
         instance.save()
         return instance
+
+
+class CatSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Category
+        field = ['name', 'parent']

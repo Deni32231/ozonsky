@@ -4,7 +4,7 @@ from rest_framework import routers
 
 
 urlpatterns = [
-    path(r'user_cart/', CartView.as_view()),
-    path(r'items_list/', ItemsList.as_view()),
-    path(r'items_rud/<int:pk>', ItemsDetail.as_view())
+    path(r'cart', CartView.as_view()),
+    path(r'', ItemsList.as_view()),
+    path(r'<int:pk>', ItemsDetail.as_view())
 ]

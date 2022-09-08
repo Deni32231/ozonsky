@@ -1,17 +1,17 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from users.views import UserViewSet, GroupViewSet
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 from items.views import Cart, ItemsList, ItemsDetail
-from users import urls as auth_urls
+from users import urls as users_urls
 from items import urls as items_urls
-router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-router.register(r'groups', GroupViewSet)
+from category import urls as category_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
-    path('api/auth/', include(auth_urls)),
-    path('api/items/', include(items_urls))
+    path('api/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/users/', include(users_urls)),
+    path('api/items/', include(items_urls)),
+    path('api/categories/', include(category_urls)),
 
 ]

@@ -2,23 +2,14 @@ from django.db import models
 from users.models import User
 from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth import get_user_model
+from category.models import Category
 
 
 #user cart model
 class Cart(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    goods = ArrayField(models.IntegerField())
-    goods_quantity = ArrayField(models.IntegerField())
-
-#category root class
-class RootCategory(models.Model):
-    pass
-
-
-class Category(RootCategory):
-    name = models.TextField()
-    parent = models.ForeignKey("self", blank=True, on_delete=models.CASCADE)
-
+    goods = ArrayField(models.IntegerField(), blank=True, null=True)
+    goods_quantity = ArrayField(models.IntegerField(), blank=True, null=True)
 
 # item model for any kind of goods
 class Item(models.Model):
@@ -28,4 +19,5 @@ class Item(models.Model):
     price = models.FloatField(verbose_name='sell price')
     ##0.0 new price mean no sale
     new_price = models.FloatField(default=0.0, verbose_name="new price for sales")
+    image = models.ImageField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
