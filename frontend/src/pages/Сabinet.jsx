@@ -1,34 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
 import Block from '../components/Block';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Container from '../components/Container';
 
 const Сabinet = () => {
     return (
-        <Block title="Личный кабинет">
-            <Information>
-                <form>
-                    <label>
-                        <span>Имя</span>
-                        <input type="text" placeholder='Имя Фамилия'/>
-                    </label>
-                    <label>
-                        <span>Номер телефона</span>
-                        <input type="tel" placeholder='+7 (999) 999-99-99'/>
-                    </label>
-                    <label>
-                        <span>День рождения</span>
-                        <input type="date" placeholder='дата месяц'/>
-                    </label>
-                    <label>
-                        <span>Эл. почта</span>
-                        <input type="email" placeholder='Email'/>
-                    </label>
-                    <button>Сохранить</button>
-                </form>
-                
-            </Information>
-            <button>Выйти</button>
-        </Block>
+        <div>
+            <Header />
+            <Container>
+                <Block title="Личный кабинет">
+                    <Information>
+                        <form>
+                            <label>
+                                <span>Имя</span>
+                                <input type="text" placeholder='Имя Фамилия'/>
+                            </label>
+                            <label>
+                                <span>Номер телефона</span>
+                                <input type="tel" placeholder='+7 (999) 999-99-99'/>
+                            </label>
+                            <label>
+                                <span>День рождения</span>
+                                <input type="date" placeholder='дата месяц'/>
+                            </label>
+                            <label>
+                                <span>Эл. почта</span>
+                                <input type="email" placeholder='Email'/>
+                            </label>
+                            <button>Сохранить</button>
+                        </form>
+                    </Information>
+                    <button>Выйти</button>
+                </Block>
+            </Container>
+            <Footer/>
+        </div>
     );
 };
 

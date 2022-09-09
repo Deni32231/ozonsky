@@ -20,7 +20,7 @@ const StyledBlock = styled.div`
     font-size: 32px;
     font-weight: 800;
     text-transform: uppercase;
-    margin: 115px 0 30px 0;
+    margin: 90px 0 30px 0;
 }
 `
 
