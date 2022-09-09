@@ -75,9 +75,6 @@ li {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
-    &:hover {
-        font-weight: 800;
-    }
     
     >img {
         margin-right: 10px;
@@ -86,6 +83,7 @@ li {
 
 a {
     color: inherit;
+    font-size: 16px;
 }
 
 span + nav {
@@ -96,9 +94,6 @@ a[href^=tel] {
     font-size: 20px;
     font-weight: 600;
     margin-left: 10px;
-    &:hover {
-        font-weight: 800;
-    }
 }
 
 p {
@@ -116,6 +111,21 @@ input {
     border-radius: 16px;
     border: inherit;
     padding: 10px 20px;
+}
+
+button {
+    padding: 12px 16px;
+    font-size: 18px;
+    font-weight: 600;
+    border: 1px solid #FFFFFF;
+    background-color: inherit;
+    color: #FFFFFF;
+    margin-left: 10px;
+    border-radius: 16px;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0px 0px 10px black;
+    }
 }
 
 }

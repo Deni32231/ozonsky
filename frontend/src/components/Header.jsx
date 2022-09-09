@@ -17,7 +17,6 @@ import HeaderCategory from './HeaderCategory';
 
 const Header = ({ children }) => {
 
-
     return (
         <Container>
             <HeaderInner>
@@ -25,7 +24,7 @@ const Header = ({ children }) => {
                     <Link to="/">
                         <img src={logo} alt="logo" />
                     </Link>
-                    <CatalogButton>
+                    <CatalogButton to="/catalog">
                         <ButtonImg src={catalogButton} alt="=" />
                         Каталог
                     </CatalogButton>
@@ -46,7 +45,7 @@ const Header = ({ children }) => {
                     <MiiButton to="/cabinet" onClick={(e) => console.log(e.currentTarget)}>
                         <img src={heart} alt="heart" />
                     </MiiButton>
-                    <MiiButton to="/cabinet">
+                    <MiiButton to="/cabinet" onClick={(e) => console.log(e.currentTarget)}>
                         <img src={profile} alt="heart" />
                     </MiiButton>
                     <Basket to='/basket'>
@@ -65,7 +64,7 @@ const HeaderInner = styled.div`
 padding-top: 30px;
 `
 
-const CatalogButton = styled.button`
+const CatalogButton = styled(Link)`
 font-size: 16px;
 font-weight: 800;
 border-radius: 31px;
@@ -137,6 +136,11 @@ background-color: none;
 background-color: inherit;
 margin-left: 14px;
 cursor: pointer;
+
+&:hover {
+    border: 1px solid #FFA900;
+    background-color: #FFF8EB;
+}
 `
 
 const Basket = styled(Link)`

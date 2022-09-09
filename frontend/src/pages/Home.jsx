@@ -9,65 +9,71 @@ import testPng2 from '../images/categoryCard/test.png'
 import Flex from '../components/Flex';
 import Block from '../components/Block'
 import Footer from '../components/Footer';
+import Header from '../components/Header';
+import Container from '../components/Container';
 
 const Home = () => {
     const name = 'Сок Ideas тыквенно-апельсиновый, 1л'
     return (
         <div>
-            <PromoBlocks />
-            <Block title="Скидки">
-                <Flex gap="15px">
-                    <ProductCard title={name} price="81931" amount="2" img={testPng}/>
-                    <ProductCard title={name} price="81931" amount="2" img={testPng}/>
-                    <ProductCard title={name} price="81931" amount="2" img={testPng}/>
-                    <ProductCard title={name} price="81931" amount="2" img={testPng}/>
-                </Flex>
-            </Block>
-            <Block title="Супермаркет">
+            <Header />
+            <Container>
+                <PromoBlocks />
+                <Block title="Скидки">
+                    <Flex gap="15px">
+                        <ProductCard title={name} price="81931" amount="2" img={testPng}/>
+                        <ProductCard title={name} price="81931" amount="2" img={testPng}/>
+                        <ProductCard title={name} price="81931" amount="2" img={testPng}/>
+                        <ProductCard title={name} price="81931" amount="2" img={testPng}/>
+                    </Flex>
+                </Block>
+                <Block title="Супермаркет">
+                    <Flex wrap="wrap">
+                        <CategoryCard img={testPng2} title="Вода и напитки"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки"/>
+                    </Flex>
+                </Block>
+                <Block title="Кулинария">
                 <Flex wrap="wrap">
-                    <CategoryCard img={testPng2} title="Вода и напитки"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки"/>
-                </Flex>
-            </Block>
-            <Block title="Кулинария">
-            <Flex wrap="wrap">
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
-                </Flex>
-            </Block>
-            <Block title="Заморозка">
-            <Flex wrap="wrap" justify="flex-start">
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBEDFF"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBEDFF"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBEDFF"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBEDFF"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBEDFF"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBEDFF"/>
-                </Flex>
-            </Block>
-            <Block title="Другое">
-                <Flex wrap="wrap">
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBFDFF"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBFDFF"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBFDFF"/>
-                    <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBFDFF"/>
-                </Flex>
-            </Block>
-            <Block title="Доставка и оплата">
-                <PromocodeBlock></PromocodeBlock>
-            </Block>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#FFF8EB" borderColor="#FFE7B9"/>
+                    </Flex>
+                </Block>
+                <Block title="Заморозка">
+                <Flex wrap="wrap" justify="flex-start">
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBEDFF"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBEDFF"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBEDFF"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBEDFF"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBEDFF"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBEDFF"/>
+                    </Flex>
+                </Block>
+                <Block title="Другое">
+                    <Flex wrap="wrap">
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBFDFF"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBFDFF"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBFDFF"/>
+                        <CategoryCard img={testPng2} title="Вода и напитки" bgColor="#EBFDFF"/>
+                    </Flex>
+                </Block>
+                <Block title="Доставка и оплата">
+                    <PromocodeBlock></PromocodeBlock>
+                </Block>
+            </Container>
+            <Footer />
         </div>
     );
 };
