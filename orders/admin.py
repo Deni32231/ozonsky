@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Category
+from .models import Order
 
-admin.site.register(Category)
+
 # Register your models here.
+admin.site.register(Order)

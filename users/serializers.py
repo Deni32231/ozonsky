@@ -3,7 +3,11 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.password_validation import validate_password
 from rest_framework.validators import UniqueValidator
+from django.core.exceptions import (
+    FieldDoesNotExist, ImproperlyConfigured, ValidationError,
+)
 
 class RegisterUserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -18,6 +22,10 @@ class RegisterUserSerializer(serializers.ModelSerializer):
         if attrs.get('password') != attrs.get('confirm_password'):
             raise serializers.ValidationError("Those passwords don't match.")
         del attrs['confirm_password']
+        try:
+            validate_password(attrs.get('password'))
+        except ValidationError as e:
+            raise serializers.ValidationError({'password':e.messages})
         attrs['password'] = make_password(attrs['password'])
         return attrs
 
@@ -42,7 +50,7 @@ class RegisterUserSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ['id', 'username', 'email', 'groups']
+        fields = ['id', 'username', 'email', 'fio', 'phone_number', 'adress']
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
