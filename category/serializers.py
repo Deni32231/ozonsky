@@ -5,4 +5,4 @@ from .models import Category
 class CatSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Category
-        field = ['pk', 'name', 'parent']
+        fields = ['pk', 'name', 'parent']

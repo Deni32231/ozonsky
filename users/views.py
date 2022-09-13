@@ -39,7 +39,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
 
 
-class UsersList(generics.ListCreateAPIView):
+class UsersList(generics.ListAPIView):
     permission_classes = [permissions.IsAdminUser]
     queryset = get_user_model().objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
