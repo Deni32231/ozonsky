@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Category
 
 
-class CatSerializer(serializers.HyperlinkedModelSerializer):
+class CatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['pk', 'name', 'parent']
+        fields = ['pk', 'name', 'parent', 'image']
