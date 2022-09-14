@@ -1,164 +1,97 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link, useNavigate } from 'react-router-dom';
+import Button from './UI/Button/Button';
+import Container from './UI/Container/Container';
+import Flex from './UI/Flex/Flex';
+import HeaderSearch from './HeaderSearch';
 
-
+import catalogImg from '../images/header/catalogButton.svg';
 import logo from '../images/header/logo.png';
-import catalogButton from '../images/header/catalogButton.svg';
-import search from '../images/header/search.svg';
-import heart from '../images/header/heart.svg';
-import profile from '../images/header/profile.svg';
+import nav from '../images/header/nav.png';
+import profile from '../images/header/profile.png';
 import basket from '../images/header/basket.svg';
 
-import Flex from './Flex';
-import Container from './Container';
-import HeaderCategory from './HeaderCategory';
+import test from '../images/headerCategory/apple.png';
+import Modal from './UI/Modal/Modal';
+import Input from './UI/Input/Input';
+import RegisterForm from './RegisterForm';
+import LoginForm from './LoginForm';
 
+const Header = () => {
+    const isAuth = false;
 
-const Header = ({ children }) => {
+    const navigate = useNavigate();
+
+    const categoriesArr = [
+        {id: 1, img: test, title: 'Супермаркет'},
+        {id: 2, img: test, title: 'Кулинария'},
+        {id: 3, img: test, title: 'Заморозка'},
+        {id: 4, img: test, title: 'Другое'},
+        {id: 5, img: test, title: 'Акции'},
+        {id: 6, img: test, title: 'Магазины'},
+    ]
+
+    const [categories, setCategories] = useState(categoriesArr);
+    const [activeRegister, setActiveRegister] = useState('none');
+    const [activeLogin, setActiveLogin] = useState('none');
 
     return (
         <Container>
-            <HeaderInner>
+            <Modal active={activeRegister} setActive={setActiveRegister}>
+                <RegisterForm/>
+            </Modal>
+            <Modal active={activeLogin} setActive={setActiveLogin}>
+                <LoginForm/>
+            </Modal>
+            <StyledHeader>
                 <Flex>
-                    <Link to="/">
-                        <img src={logo} alt="logo" />
-                    </Link>
-                    <CatalogButton to="/catalog">
-                        <ButtonImg src={catalogButton} alt="=" />
-                        Каталог
-                    </CatalogButton>
-                    <form action="#" onClick={(e) => {
-                        e.preventDefault();
-                    }}>
-                        <SearchInput placeholder='Начать поиск'>
-
-                        </SearchInput>
-                        <SearchButton>
-                            <img src={search} alt="" />
-                        </SearchButton>
-                    </form>
-                    <DeliveryButton>
-                        Выберите способ получения <br/> 
-                        <DeliveryBoldText>Доставка или самовывоз</DeliveryBoldText>
-                    </DeliveryButton>
-                    <MiiButton to="/cabinet" onClick={(e) => console.log(e.currentTarget)}>
-                        <img src={heart} alt="heart" />
-                    </MiiButton>
-                    <MiiButton to="/cabinet" onClick={(e) => console.log(e.currentTarget)}>
-                        <img src={profile} alt="heart" />
-                    </MiiButton>
-                    <Basket to='/basket'>
-                        <ButtonImg src={basket} alt="=" />
-                        Корзина
-                    </Basket>
+                    <Link to='/'><img src={logo} alt="logo" /></Link>
+                    <Button text="Каталог" img={catalogImg} height="48px" onClick={() => navigate('/catalog')}/>
+                    <HeaderSearch/>
+                    <Button 
+                        text="Доставка или самовывоз" 
+                        img={nav}
+                        bgcolor="rgba(255, 195, 77, 1)"
+                        border="rgba(255, 195, 77, 1)"
+                        bgcolorHover="rgba(255, 169, 0, 1)"
+                        borderHover="rgba(255, 169, 0, 1)"
+                        height="48px"
+                    />
+                    {isAuth 
+                        ? 
+                        <Button text="Личный кабинет" img={profile} height="48px" onClick={() => navigate('/cabinet')}/>
+                        :
+                        <Flex gap="10px">
+                            <Button text="Вход" img={profile} height="48px" onClick={() => setActiveLogin('flex')}/>
+                            <Button text="Регистрация" img={profile} height="48px" onClick={() => setActiveRegister('flex')}/>
+                        </Flex>
+                        
+                    }
+                    <Button text="Корзина" img={basket} height="48px" onClick={() => navigate('/basket')}/>
                 </Flex>
-                <HeaderCategory></HeaderCategory>
-                {children}
-            </HeaderInner>
+                <Flex justify="flex-start" gap="10px" margin="20px 0">
+                    {categories.map((item) => 
+                        <Button 
+                            key={item.id}
+                            text={item.title} 
+                            img={item.img} 
+                            border="rgba(255, 169, 0, 0.45)"
+                            bgcolor="rgba(255, 248, 235, 1)"
+                            bgcolorHover="rgba(255, 232, 188, 1)"
+                            borderHover="1px solid rgba(255, 169, 0, 1)"
+                            color="#000000"
+                            onClick={() => navigate(`/catalog/${item.id}`)}
+                        />
+                    )}
+                </Flex>
+            </StyledHeader>
         </Container>
     );
 };
 
-const HeaderInner = styled.div`
-padding-top: 30px;
-`
-
-const CatalogButton = styled(Link)`
-font-size: 16px;
-font-weight: 800;
-border-radius: 31px;
-border: 1px solid #FF0000;
-background-color: #FF0000;
-color: #FFFFFF;
-padding: 10px 20px;
-cursor: pointer;
-margin-left: 20px;
-display: flex;
-align-items: center;
-
-&:hover {
-    background-color: #DB0000;
-}
-`
-
-const ButtonImg = styled.img`
-margin-right: 8px;
-`
-
-const SearchInput = styled.input`
-border: 1px solid #E1E1E1;
-border-radius: 16px;
-font-size: 16px;
-font-weight: 400;
-color: #6B6B6B;
-padding: 12px;
-margin-left: 25px;
-width: 317px;
-`
-
-const SearchButton = styled.button`
-background-color: #FFFFFF;
-border: none;
-cursor: pointer;
-margin-left: -40px;
-position: relative;
-top: 6px;
-`
-
-const DeliveryButton = styled.button`
-padding: 6px 18px;
-background-color: #FFA900;
-border: none;
-border-radius: 15px;
-color: #FFFFFF;
-cursor: pointer;
-margin-left: 40px;
-font-size: 14px;
-text-align: start;
-`
-
-const DeliveryBoldText = styled.span`
-font-weight: 800;
-font-size: 16px;
-white-space: nowrap;
-`
-
-const MiiButton = styled(Link)`
-min-width: 50px;
-min-height: 50px;
-border: 1px solid #E1E1E1;
-display: flex;
-align-items: center;
-justify-content: center;
-border-radius: 16px;
-background-color: none;
-background-color: inherit;
-margin-left: 14px;
-cursor: pointer;
-
-&:hover {
-    border: 1px solid #FFA900;
-    background-color: #FFF8EB;
-}
-`
-
-const Basket = styled(Link)`
-font-size: 16px;
-font-weight: 800;
-border: 1px solid #FF0000;
-background-color: #FF0000;
-color: #FFFFFF;
-padding: 10px 20px;
-cursor: pointer;
-margin-left: 20px;
-display: flex;
-align-items: center;
-border-radius: 15px;
-
-&:hover{
-    background-color: #DB0000;
-}
+const StyledHeader = styled.div`
+margin-top: 20px;
 `
 
 export default Header;

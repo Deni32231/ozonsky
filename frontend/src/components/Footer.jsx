@@ -1,133 +1,103 @@
 import React from 'react';
-import styled from 'styled-components';
-import Container from './Container';
 import { Link } from 'react-router-dom';
-import Flex from './Flex';
+import styled from 'styled-components';
+import Container from './UI/Container/Container';
+import Flex from './UI/Flex/Flex';
+
 import phone from '../images/footer/phone.svg';
-import compass from '../images/footer/compass.svg';
-import inst from '../images/footer/inst.svg';
 import mail from '../images/footer/mail.svg';
+import inst from '../images/footer/inst.svg';
+import compass from '../images/footer/compass.svg';
+import Input from './UI/Input/Input';
+import Button from './UI/Button/Button';
 
 const Footer = () => {
     return (
-        <FooterContainer>
+        <StyledFooter>
             <Container>
                 <Flex align="flex-start">
                     <nav>
                         <ul>
-                            <li><Link to="/catalog">Озонский онлайн</Link></li>
-                            <li><Link to="/catalog">Кулинария</Link></li>
-                            <li><Link to="/catalog">Супермаркет</Link></li>
-                            <li><Link to="/catalog">Заморозка</Link></li>
-                            <li><Link to="/catalog">Другое</Link></li>
+                            <li><Link to="/">Ильинский онлайн</Link></li>
+                            <li><Link to="/">Кулинария</Link></li>
+                            <li><Link to="/">Супермаркет</Link></li>
+                            <li><Link to="/">Заморозка</Link></li>
+                            <li><Link to="/">Другое</Link></li>
                         </ul>
                     </nav>
                     <nav>
                         <ul>
-                            <li><Link to="/catalog">Озонский клуб</Link></li>
-                            <li><Link to="/catalog">Акции</Link></li>
-                            <li><Link to="/catalog">Доставка и оплата</Link></li>
-                            <li><Link to="/catalog">Программа лояльности</Link></li>
-                            <li><Link to="/catalog">Политика конфиденциальности</Link></li>
-                            <li><Link to="/catalog">Вакансии</Link></li>
+                            <li><Link to="/">Ильинский клуб</Link></li>
+                            <li><Link to="/">Акции</Link></li>
+                            <li><Link to="/">Доставка и оплата</Link></li>
+                            <li><Link to="/">Программа лояльности</Link></li>
+                            <li><Link to="/">Политика конфиденциальности</Link></li>
+                            <li><Link to="/">Вакансии</Link></li>
                         </ul>
                     </nav>
                     <div>
-                        <Flex justify="flex-start">
-                            <img src={phone} alt="#"></img>
-                            <a href="tel:+7999999999">+7 (999) 999-99-99</a>
-                        </Flex>
-                        <br/>
-                        <span>Ежедневно c 09:00 до 21:00</span>
                         <nav>
-                            <ul>
-                                <li><img src={compass} alt="compass" /><a href="/">Адреса магазинов</a></li>
-                                <li><img src={inst} alt="inst" /><a href="/">Следите за нами</a></li>
-                                <li><img src={mail} alt="mail" /><a href="/">Обратная связь</a></li>
-                            </ul>
+                            <li><img src={phone} alt="" /><a href="tel:+799999999999">+7 (999) 999-99-99</a></li>
+                            <li><img src={compass} alt="" /><Link to="/">Адреса магазинов</Link></li>
+                            <li><img src={inst} alt="" /><Link to="/">Следите за нами</Link></li>
+                            <li><img src={mail} alt="" /><Link to="/">Обратная связь</Link></li>
                         </nav>
                     </div>
                     <div>
-                        <p>Подпишитесь на вкусные и полезые новости</p>
-                        <form>
-                            <input type="email" placeholder='email'/>
-                            <button>Подписаться</button>
+                        <span>Подпишитесь на вкусные и полезые новости</span>
+                        <form onSubmit={e => e.preventDefault()}>
+                            <Input type="email" placeholder="Email" required/>
+                            <Button 
+                                text="Подписаться"
+                                border="#FFFFFF"
+                                borderHover="#FFFFFF"
+                                bgcolor="inherit"
+                                bgcolorHover="inherit"
+                            />
                         </form>
                     </div>
                 </Flex>
             </Container>
-        </FooterContainer>
+        </StyledFooter>
     );
 };
 
-const FooterContainer = styled.div`
+const StyledFooter = styled.div`
 background-color: #D90000;
-padding: 37px 0 20px 0;
-margin-top: 100px;
-max-width: 100%;
-color: #FFFFFF;
-font-weight: 400;
-font-size: 14px;
-
-
-
-li {
+padding: 40px 0 20px 0;
+a {
+    color: #FFFFFF;
+}
+div > nav > li {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
-    
+    &:first-child {
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
     >img {
-        margin-right: 10px;
+        margin-right: 15px;
     }
 }
 
-a {
-    color: inherit;
-    font-size: 16px;
+li {
+    margin-bottom: 10px;
+    font-size: 14px;
 }
 
-span + nav {
-    margin-top:  20px;
-}
-
-a[href^=tel] {
-    font-size: 20px;
-    font-weight: 600;
-    margin-left: 10px;
-}
-
-p {
+div > span {
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 600;
+    color: #FFFFFF;
 }
 
 form {
+    display: flex;
     margin-top: 20px;
 }
 
-input {
-    width: 251px;
-    height: 46px;
-    border-radius: 16px;
-    border: inherit;
-    padding: 10px 20px;
-}
-
 button {
-    padding: 12px 16px;
-    font-size: 18px;
-    font-weight: 600;
-    border: 1px solid #FFFFFF;
-    background-color: inherit;
-    color: #FFFFFF;
-    margin-left: 10px;
-    border-radius: 16px;
-    cursor: pointer;
-    &:hover {
-        box-shadow: 0px 0px 10px black;
-    }
-}
-
+    margin-left: 20px;
 }
 `
 
