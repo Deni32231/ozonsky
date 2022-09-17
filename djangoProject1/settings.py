@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'category',
     'cart',
     'orders',
+    'vacancies',
 ]
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=7),

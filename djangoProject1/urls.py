@@ -6,6 +6,7 @@ from items import urls as items_urls
 from category import urls as category_urls
 from cart import urls as cart_urls
 from orders import urls as orders_urls
+from vacancies import urls as work_urls
 from django.conf import settings
 from django.conf.urls.static import static
 from drf_yasg.views import get_schema_view
@@ -35,6 +36,7 @@ urlpatterns = [
     path('api/categories/', include(category_urls)),
     path('api/carts/', include(cart_urls)),
     path('api/orders/', include(orders_urls)),
+    path('api/work/', include(work_urls)),
     path(r'playground/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path(r'docs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
